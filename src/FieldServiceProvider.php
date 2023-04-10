@@ -65,7 +65,11 @@ class FieldServiceProvider extends ServiceProvider
         $file = resource_path('lang/vendor/nova-tiptap/'.app()->getLocale().'.json');
 
         if (! is_readable($file)) {
-            $file = base_path('vendor/manogi/nova-tiptap/resources/lang/'.app()->getLocale().'.json');
+            $file = base_path('lang/vendor/nova-tiptap/' . app()->getLocale(). '.json');
+            
+            if (! is_readable($file)) {
+                $file = base_path('vendor/manogi/nova-tiptap/resources/lang/'.app()->getLocale().'.json');
+            }
         }
 
         if (is_readable($file)) {
